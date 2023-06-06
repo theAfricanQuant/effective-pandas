@@ -133,12 +133,18 @@ def download_timeseries(date):
         ('UserTableName', 'On_Time_Performance'),
         ('DBShortName', 'On_Time'),
         ('RawDataTable', 'T_ONTIME'),
-        ('sqlstr', ' SELECT FL_DATE,ORIGIN,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME FROM  T_ONTIME WHERE Month ={} AND YEAR={}'.format(month, year)),
-        ('varlist', 'FL_DATE,ORIGIN,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME'),
+        (
+            'sqlstr',
+            f' SELECT FL_DATE,ORIGIN,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME FROM  T_ONTIME WHERE Month ={month} AND YEAR={year}',
+        ),
+        (
+            'varlist',
+            'FL_DATE,ORIGIN,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME',
+        ),
         ('filter1', 'title='),
         ('filter2', 'title='),
         ('geo', 'All�'),
-        ('time',month_name),
+        ('time', month_name),
         ('timename', 'Month'),
         ('GEOGRAPHY', 'All'),
         ('XYEAR', str(year)),
@@ -366,7 +372,7 @@ def download_timeseries(date):
         ('VarDesc', 'Div5WheelsOff'),
         ('VarType', 'Char'),
         ('VarDesc', 'Div5TailNum'),
-        ('VarType', 'Char')
+        ('VarType', 'Char'),
     ]
     cookies = {
         'ASPSESSIONIDCAQCSDSS': 'GOBIGIDBLGILGICKLFHKIHMN',

@@ -8,17 +8,16 @@ def _repr_html_(self):
 
     if self.index.nlevels > 1:
         return None
-    else:
+    if self.columns.name is None:
         name = self.index.name or 'index'
-        if self.columns.name is None:
-            self.columns.name = name
+        self.columns.name = name
 
-        max_rows = pd.get_option("display.max_rows")
-        max_cols = pd.get_option("display.max_columns")
-        show_dimensions = pd.get_option("display.show_dimensions")
+    max_rows = pd.get_option("display.max_rows")
+    max_cols = pd.get_option("display.max_columns")
+    show_dimensions = pd.get_option("display.show_dimensions")
 
-        return self.to_html(max_rows=max_rows, max_cols=max_cols,
-                            show_dimensions=show_dimensions, notebook=True)
+    return self.to_html(max_rows=max_rows, max_cols=max_cols,
+                        show_dimensions=show_dimensions, notebook=True)
 
 if int(os.environ.get("MODERN_PANDAS_EPUB", 0)):
     pd.DataFrame._repr_html_ = _repr_html_
